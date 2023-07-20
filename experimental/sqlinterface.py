@@ -36,10 +36,10 @@ class Wrapper():
         connection = None
         try:
             connection = mysql.connector.connect(
-                host=os.environ["CASS_DB_HOST"],
-                user=os.environ["CASS_DB_USR"],
-                passwd=os.environ["CASS_DB_PWD"],
-                database=os.environ["CASS_DB_DB"]
+                host=os.environ["DMI_DB_HOST"],
+                user=os.environ["DMI_DB_USR"],
+                passwd=os.environ["DMI_DB_PWD"],
+                database=os.environ["DMI_DB_DB"]
             )
             connection.autocommit = True
         except:

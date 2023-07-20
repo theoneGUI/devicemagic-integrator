@@ -19,14 +19,8 @@ import traceback
 # Load all of our required environment variables
 commonKnowledge.recoverLastSession()
 
-# If we're in development mode, load an import that we need.
-# If not, don't bother
-if os.environ["CASS_STAGE"] == "DEV":
-    import random
 
 # Set up global variables for use
-TBKey = os.environ["CASS_TEXTING_KEY"]
-auditData = None
 login_locked = False
 
 

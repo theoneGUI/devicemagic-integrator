@@ -19,18 +19,33 @@ import traceback
 # Load all of our required environment variables
 commonKnowledge.recoverLastSession()
 
-# If we're in development mode, load an import that we need.
-# If not, don't bother
-if os.environ["CASS_STAGE"] == "DEV":
-    import random
-
-# Set up global variables for use
-TBKey = os.environ["CASS_TEXTING_KEY"]
 auditData = None
 login_locked = False
 
 
 forciblyUpdating = {}
+
+def getResourceFromServiceTrade(route):
+    response = None
+    try:
+        response = http.request("GET",
+            "https://app.servicetrade.com/api"+route,
+            headers={
+                "Cookie": "PHPSESSID="+os.environ['CASS_SESSID']
+            }
+        ).data.decode()
+        library = json.loads(response)
+    except json.decoder.JSONDecodeError:
+        doPanic()
+        response = http.request("GET",
+            "https://app.servicetrade.com/api"+route,
+            headers={
+                "Cookie": "PHPSESSID="+os.environ['CASS_SESSID']
+            }
+        ).data.decode()
+        library = json.loads(response) 
+    library = library["data"]
+    return library
 
 # Set up how to get stuff from ServiceTrade
 def makeAPIRequest(page):
