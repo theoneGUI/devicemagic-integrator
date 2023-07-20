@@ -1,0 +1,9 @@
+python-dotenv 
+urllib3
+Flask
+Werkzeug
+MarkupSafe
+mysql-connector
+requests
+gunicorn
+flask-cors
