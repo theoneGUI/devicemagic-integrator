@@ -30,7 +30,7 @@ def hello():
 
 def getthedevicemagic():
 	print(request.json)
-	with open("/home/ubuntu/dmi-dev/devicemagic_submissions.log", "a") as file:
+	with open("/home/ubuntu/devicemagic_submissions.log", "a") as file:
 		file.write(json.dumps(request.json, indent=2))
 		file.write("\n\n\n")
 	return '{"status": true}'
